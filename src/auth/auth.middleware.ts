@@ -11,6 +11,7 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     try {
       const tokenData = verifyToken(token);
       req.body.tokenData = tokenData;
+      console.log(tokenData);
       next();
     } catch (error) {
       throw new ErrorException(ErrorCode.Unauthenticated);

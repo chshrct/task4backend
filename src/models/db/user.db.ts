@@ -1,4 +1,4 @@
-import { model, Model, Schema } from 'mongoose';
+import { Date, model, Model, Schema } from 'mongoose';
 
 export interface IUser {
   _id: string;
@@ -6,6 +6,8 @@ export interface IUser {
   password: string;
   name: string;
   status: 'active' | 'blocked';
+  registrationDate: any;
+  loginDate: any;
 }
 
 const IUserSchema = new Schema<IUser>(
@@ -21,8 +23,10 @@ const IUserSchema = new Schema<IUser>(
     password: { type: String, required: true },
     name: { type: String, required: true },
     status: { type: String, required: true },
+    loginDate: { type: Date, required: true },
+    registrationDate: { type: Date, required: true },
   },
-  { collection: 'user', timestamps: true }
+  { collection: 'users', timestamps: true }
 );
 
 export const UserModel: Model<IUser> = model('user', IUserSchema);
