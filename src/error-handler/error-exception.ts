@@ -11,6 +11,7 @@ export class ErrorException extends Error {
     this.metaData = metaData;
     switch (code) {
       case ErrorCode.Unauthenticated:
+      case ErrorCode.Blocked:
         this.status = 401;
         break;
       case ErrorCode.MaximumAllowedGrade:
